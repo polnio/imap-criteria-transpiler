@@ -38,6 +38,24 @@ const FLAGS = [
   'UNFLAGGED',
   'UNSEEN',
 ] as const
+type Flag = (typeof FLAGS)[number]
+
+const FLAGS_INVERSION = {
+  ALL: 'ALL',
+  ANSWERED: 'UNANSWERED',
+  DELETED: '!DELETED',
+  DRAFT: 'UNDRAFT',
+  FLAGGED: 'UNFLAGGED',
+  NEW: '!NEW',
+  SEEN: 'UNSEEN',
+  RECENT: 'OLD',
+  OLD: 'RECENT',
+  UNANSWERED: 'ANSWERED',
+  UNDRAFT: 'UNDELETED',
+  UNFLAGGED: 'FLAGGED',
+  UNSEEN: 'SEEN',
+  // eslint-disable-next-line @typescript-eslint/ban-types
+} as const satisfies Record<Flag, Flag | (string & {})>
 
 export {
   QUOTES,
@@ -47,5 +65,6 @@ export {
   UNARY_OPERATORS,
   HEADERS,
   FLAGS,
+  FLAGS_INVERSION,
 }
-export type { Keyword, BinaryOperator, UnaryOperator }
+export type { Keyword, BinaryOperator, UnaryOperator, Flag }

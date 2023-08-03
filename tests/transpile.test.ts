@@ -12,7 +12,7 @@ it('should transpile a single string', () => {
 })
 
 it('should transpile a flag', () => {
-  expect(transpile('unseen')).toStrictEqual([['UNSEEN']])
+  expect(transpile('unseen')).toStrictEqual(['UNSEEN'])
 })
 
 it('should transpile multiple strings separated by two points', () => {
@@ -27,6 +27,8 @@ it('should transpile logical doors', () => {
   expect(transpile('from:a or to:b')).toStrictEqual([
     ['OR', ['HEADER', 'FROM', 'a'], ['HEADER', 'TO', 'b']],
   ])
+  expect(transpile('not from:a')).toStrictEqual([['!HEADER', 'FROM', 'a']])
+  expect(transpile('not seen')).toStrictEqual(['UNSEEN'])
 })
 
 it('should transpile parenthesis', () => {

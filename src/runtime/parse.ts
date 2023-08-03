@@ -34,22 +34,18 @@ function parseSingle(tokens: Token[]): Node {
 
 function parsePotentialOrOperator(tokens: Token[]): Node {
   let left = parsePotentialAndOperator(tokens)
-  while (tokens[0] instanceof KeywordToken && tokens[0].value === 'and') {
+  while (tokens[0] instanceof KeywordToken && tokens[0].value === 'or') {
     tokens.shift()
-    left = new BinaryOperatorNode(
-      left,
-      'and',
-      parsePotentialAndOperator(tokens),
-    )
+    left = new BinaryOperatorNode(left, 'or', parsePotentialAndOperator(tokens))
   }
   return left
 }
 
 function parsePotentialAndOperator(tokens: Token[]): Node {
   let left = parsePotentialTwoPoints(tokens)
-  while (tokens[0] instanceof KeywordToken && tokens[0].value === 'or') {
+  while (tokens[0] instanceof KeywordToken && tokens[0].value === 'and') {
     tokens.shift()
-    left = new BinaryOperatorNode(left, 'or', parsePotentialTwoPoints(tokens))
+    left = new BinaryOperatorNode(left, 'and', parsePotentialTwoPoints(tokens))
   }
   return left
 }
