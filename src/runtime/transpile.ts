@@ -10,11 +10,14 @@ function transpile(source: string): Criteria {
   if (source.length === 0) {
     return ['All']
   }
-
   const tokens = tokenize(source)
   const node = parse(tokens)
 
-  return transpileNode(node)
+  if (node instanceof BinaryOperatorNode && node.operator === 'and') {
+    return [transpileNode(node.left), transpileNode(node.right)]
+  }
+
+  return [transpileNode(node)]
 }
 
 function transpileNode(node: Node, keys: string[] = HEADERS.slice()): Criteria {
