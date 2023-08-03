@@ -1,20 +1,20 @@
-# imap-query-transpiler
+# imap-criteria-transpiler
 
 ## Description
 
-`imap-query-transpiler` is a library for transpiling intuitive queries into Imap criterias.
+`imap-criteria-transpiler` is a library for transpiling intuitive queries into Imap criterias.
 
 ## Installation
 
 ```bash
 # with npm
-npm install --save imap-query-transpiler
+npm install --save imap-criteria-transpiler
 
 # with yarn
-yarn add imap-query-transpiler
+yarn add imap-criteria-transpiler
 
 # with pnpm
-pnpm add imap-query-transpiler
+pnpm add imap-criteria-transpiler
 ```
 
 ## Documentation
@@ -28,7 +28,7 @@ You can use simple quotes or double quotes to escape spaces or logic doors. You 
 ## Examples
 
 ```ts
-import transpiler from 'imap-query-transpiler'
+import transpiler from 'imap-criteria-transpiler'
 
 const query = 'from:foo AND to:bar'
 
