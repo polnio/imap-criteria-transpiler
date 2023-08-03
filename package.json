@@ -1,8 +1,8 @@
 {
   "name": "imap-criteria-transpiler",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "a library for transpiling intuitive queries into Imap criterias",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "test": "vitest --run",
