@@ -1,4 +1,4 @@
-import { HEADERS } from '../data/constants'
+import { FLAGS, HEADERS } from '../data/constants'
 import parse from './parse'
 import tokenize from './tokenize'
 import type Node from '../data/ast'
@@ -22,6 +22,9 @@ function transpile(source: string): Criteria {
 
 function transpileNode(node: Node, keys: string[] = HEADERS.slice()): Criteria {
   if (node instanceof StringNode) {
+    if (FLAGS.includes(node.value.toUpperCase())) {
+      return [node.value.toUpperCase()]
+    }
     const firstKey = keys[0]
     if (firstKey === undefined) {
       throw new Error('First key is undefined')
@@ -37,11 +40,11 @@ function transpileNode(node: Node, keys: string[] = HEADERS.slice()): Criteria {
   }
 
   if (node instanceof TwoPointsNode) {
-    const leftValue = node.left.value.toUpperCase()
-    if (!HEADERS.includes(leftValue)) {
+    const leftValue = node.left.value
+    if (!HEADERS.includes(leftValue.toUpperCase())) {
       throw new Error(`${leftValue} is not a header`)
     }
-    return transpileNode(node.right, [leftValue])
+    return transpileNode(node.right, [leftValue.toUpperCase()])
   }
 
   if (node instanceof BinaryOperatorNode) {

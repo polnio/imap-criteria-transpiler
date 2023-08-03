@@ -23,6 +23,21 @@ const SYMBOL_TOKEN_MAP = {
 } as const satisfies Record<string, () => Token>
 
 const HEADERS = ['FROM', 'TO', 'SUBJECT'] as const
+const FLAGS = [
+  'ALL',
+  'ANSWERED',
+  'DELETED',
+  'DRAFT',
+  'FLAGGED',
+  'NEW',
+  'SEEN',
+  'RECENT',
+  'OLD',
+  'UNANSWERED',
+  'UNDRAFT',
+  'UNFLAGGED',
+  'UNSEEN',
+] as const
 
 export {
   QUOTES,
@@ -31,5 +46,6 @@ export {
   BINARY_OPERATORS,
   UNARY_OPERATORS,
   HEADERS,
+  FLAGS,
 }
 export type { Keyword, BinaryOperator, UnaryOperator }

@@ -11,6 +11,10 @@ it('should transpile a single string', () => {
   ])
 })
 
+it('should transpile a flag', () => {
+  expect(transpile('unseen')).toStrictEqual([['UNSEEN']])
+})
+
 it('should transpile multiple strings separated by two points', () => {
   expect(transpile('from:test')).toStrictEqual([['HEADER', 'FROM', 'test']])
 })
