@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
+    "module": "CommonJS",
     "moduleResolution": "Node",
     "esModuleInterop": true,
     "strict": true,
@@ -8,16 +9,13 @@
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
     "isolatedModules": true,
-    "types": [
-      "@total-typescript/ts-reset"
-    ]
+    "declaration": true,
+    "outDir": "dist",
+    "types": ["@total-typescript/ts-reset"]
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"],
   "ts-node": {
-    "require": [
-      "tsconfig-paths/register"
-    ]
+    "require": ["tsconfig-paths/register"]
   }
 }
