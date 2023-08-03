@@ -23,6 +23,7 @@ jobs:
       - run: pnpm ts:check
       - run: pnpm test
       - run: pnpm lint:check
+      - run: pnpm build
       - run: pnpm publish --no-git-check
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}

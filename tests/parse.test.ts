@@ -55,3 +55,26 @@ it('should parse parenthesis', () => {
     ),
   )
 })
+
+it('should take care of priority', () => {
+  expect(parse(tokenize('a or b and c'))).toEqual(
+    new BinaryOperatorNode(
+      new StringNode('a'),
+      'or',
+      new BinaryOperatorNode(new StringNode('b'), 'and', new StringNode('c')),
+    ),
+  )
+  expect(parse(tokenize('a and b or c'))).toEqual(
+    new BinaryOperatorNode(
+      new BinaryOperatorNode(new StringNode('a'), 'and', new StringNode('b')),
+      'or',
+      new StringNode('c'),
+    ),
+  )
+  expect(parse(tokenize('not from:a'))).toEqual(
+    new UnaryOperatorNode(
+      'not',
+      new TwoPointsNode(new StringNode('from'), new StringNode('a')),
+    ),
+  )
+})
