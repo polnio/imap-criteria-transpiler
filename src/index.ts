@@ -1,1 +1,3 @@
-export { default as transpile } from './runtime/transpile'
+import transpile from './runtime/transpile'
+
+export default transpile

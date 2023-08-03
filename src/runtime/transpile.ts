@@ -4,11 +4,11 @@ import tokenize from './tokenize'
 import type Node from '../data/ast'
 import { BinaryOperatorNode, StringNode, TwoPointsNode } from '../data/ast'
 
-type Criteria = string | Criteria[]
+type Criteria = Array<string | Criteria>
 
 function transpile(source: string): Criteria {
   if (source.length === 0) {
-    return 'All'
+    return ['All']
   }
 
   const tokens = tokenize(source)
